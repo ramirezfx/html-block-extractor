@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.7.5, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.7.5, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Home</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    .download-link {
+        font-size: 1.5em;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        var counter = 1;
+
+        $("#addButton").click(function () {
+            counter++;
+            var html = '<div id="additionalLine' + counter + '">';
+            html += '<div class="row justify-content-center mt-4">';
+            html += '<div class="col-6 form-group" data-for="name">';
+            html += '<input type="text" name="name" placeholder="Search String" data-form-field="Name" class="form-control" id="searchField' + counter + '">';
+            html += "</div>";
+            html += '<div class="col-6 form-group" data-for="name">';
+            html += '<input type="text" name="email" placeholder="File Name" data-form-field="Email" class="form-control" id="fileNameField' + counter + '">';
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            $("#additionalLines").append(html);
+        });
+
+        $("#submitBtn").click(function () {
+            var inputHtml = $("#inputField").val();
+            var outputBlock = $("#outputBlock");
+            outputBlock.empty();
+
+            for (var i = 1; i <= counter; i++) {
+                var searchStr = $("#searchField" + i).val();
+                var downloadFileName = $("#fileNameField" + i).val() || "extracted_block_" + i + ".html";
+                var startTag = "<section";
+                var endTag = "</section>";
+                var startIndex = inputHtml.indexOf(startTag);
+                var endIndex = inputHtml.indexOf(endTag, startIndex + startTag.length);
+                var blockFound = false;
+
+                while (startIndex !== -1 && endIndex !== -1) {
+                    var block = inputHtml.substring(startIndex, endIndex + endTag.length);
+                    if (block.includes(searchStr)) {
+                        // Create the download link
+                        var downloadLink = document.createElement("a");
+                        downloadLink.href = "data:text/html;charset=utf-8," + encodeURIComponent(block);
+                        downloadLink.download = downloadFileName;
+                        downloadLink.innerHTML = "Download " + downloadFileName;
+                        downloadLink.classList.add("download-link");
+
+                        // Add the download link to the page
+
+                        outputBlock.append(downloadLink);
+                        outputBlock.append(document.createElement("br"));
+                        outputBlock.append(document.createElement("hr"));
+                        blockFound = true;
+                        break;
+                    }
+                    startIndex = inputHtml.indexOf(startTag, endIndex + endTag.length);
+                    endIndex = inputHtml.indexOf(endTag, startIndex + startTag.length);
+                }
+
+                if (!blockFound) {
+                    outputBlock.append("<h4>No block containing the search string " + searchStr + "</h4>");
+                    outputBlock.append(document.createElement("br"));
+                    outputBlock.append(document.createElement("hr"));
+                }
+            }
+
+            if (counter === 1 && outputBlock.is(":empty")) {
+                outputBlock.text("No blocks found.");
+            }
+        });
+    });
+</script>
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu2 cid-tG5xOTbp5f" once="menu" id="menu2-0">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="https://mobiri.se">
+                        <img src="assets/images/logo.png" alt="Mobirise Website Builder" style="height: 3rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" href="https://mobiri.se">Mobirise</a></span>
+            </div>
+            
+            
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-tG5xSnKIQy" id="content4-1">
+    
+
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
+                    <strong>HTML Block-Extractor</strong></h3>
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tG6YlrmCVZ" id="content5-7">
+    
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                
+                <center><h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    Paste Your HTML-Code below</h4></center>
+                    <center><textarea id="inputField" rows="10" cols="50"></textarea></center>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-tG5SUnLpd8" id="content4-3">
+    
+
+    
+    
+    <div class="container">
+      <center>
+        <div class="title col-md-12 col-lg-8">
+
+            <div class="row justify-content-center mt-4">
+                <div class="col-6 form-group" data-for="name" style="text-align:left;">
+                    <strong>Search-String:</strong>
+                </div>
+                <div class="col-6 form-group" data-for="name" style="text-align:left;">
+                    <strong>File-Name:</strong>
+                </div>                
+                <div class="col-6 form-group" data-for="name">
+                    <input type="text" name="name" placeholder="Search String" data-form-field="Name" class="form-control" id="searchField1">
+                </div>
+                <div class="col-6 form-group" data-for="email">
+                    <input type="text" name="email" placeholder="File Name" data-form-field="Email" class="form-control" id="fileNameField1">
+                </div>
+                <div id="additionalLines"></div>
+            </div>
+
+        </div>
+    </center>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-tG6vvfMYBA" id="content4-4">
+    
+
+    
+    
+    <div class="container">
+      <center>
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-12">
+                <div class="mbr-section-btn col-12 col-md-auto">
+                    <button id="addButton" class="btn btn-primary display-4">Add Search String</button>
+                    <button id="submitBtn" class="btn btn-primary display-4">Extract HTML-Blocks</button>
+                </div>
+            </div>
+        </div>
+      </center>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-tGc9YOMDYF" id="content4-f">
+    
+
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-8">
+              <div id="outputBlock">
+              </div>
+            </div>
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2418879" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">Made with &#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/no-code-website-builder.html">No Code Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  
+  
+</body>
+</html>
